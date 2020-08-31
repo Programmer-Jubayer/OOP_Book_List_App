@@ -49,7 +49,7 @@ UI.prototype.showAlert = function (message, className) {
   }, 1500);
 };
 
-// UI prototype remove Book data
+// UI prototype remove Book data from UI
 UI.prototype.deleteItem = function (e) {
   if (e.className === "delete") {
     e.parentElement.parentElement.remove();
@@ -58,7 +58,7 @@ UI.prototype.deleteItem = function (e) {
 
 // Store function constructor
 Store = {
-  // Store prototype getBooks
+  // getBooks method
   getBooks: function () {
     let books;
     if (localStorage.getItem("books") === null) {
@@ -66,20 +66,18 @@ Store = {
     } else {
       books = JSON.parse(localStorage.getItem("books"));
     }
-
     return books;
   },
 
-  // Store prototype addBooks
+  // addBooks to localStorage
   addBooks: function (e) {
     const books = Store.getBooks();
-
     books.push(e);
-
     localStorage.setItem("books", JSON.stringify(books));
   },
 
-  displayBooks: function (el) {
+  // display the book to the ui
+  displayBooks: function () {
     const books = Store.getBooks();
 
     books.forEach((el) => {
@@ -89,6 +87,7 @@ Store = {
     });
   },
 
+  // remove book from localStorage
   deleteBooks: function (isbn) {
     const books = Store.getBooks();
 
@@ -97,7 +96,7 @@ Store = {
         books.splice(index, 1);
       }
     });
-
+    // Set the localStorage after removing
     localStorage.setItem("books", JSON.stringify(books));
   },
 };
