@@ -10,11 +10,6 @@
 .error {
   background-color: red;
 }
-
-/* .listRow:hover && .delete {
-     opacity: 1;
-} 
-*/
 .delete {
   text-decoration: none;
   color: brown;
